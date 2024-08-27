@@ -1,0 +1,16 @@
+
+services:
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7.38 # https://hub.docker.com/_/mysql
+    restart: always
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=tutorial
+    ports:
+      - '4306:3306'
